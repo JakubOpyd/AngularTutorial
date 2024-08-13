@@ -48,6 +48,6 @@ export interface PaginationParams {
     | number
     | boolean
     | ReadonlyArray<string | number | boolean>;
-  page: string;
-  perPage: string;
+  page: number;
+  perPage: number;
 }
