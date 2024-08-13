@@ -6,7 +6,7 @@ export interface Options {
     | {
         [header: string]: string | string[];
       };
-  observe: 'body';
+  observe?: 'body';
   context?: HttpContext;
   params?:
     | HttpParams
@@ -43,6 +43,11 @@ export interface Product {
 }
 
 export interface PaginationParams {
+  [param: string]:
+    | string
+    | number
+    | boolean
+    | ReadonlyArray<string | number | boolean>;
   page: string;
   perPage: string;
 }
