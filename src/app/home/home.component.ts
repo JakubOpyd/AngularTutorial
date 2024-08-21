@@ -1,4 +1,4 @@
-import { Component, ViewChild, viewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { Product, Products } from '../../types';
 import { ProductComponent } from '../components/product/product.component';
@@ -26,6 +26,14 @@ export class HomeComponent {
   displayEditPopup: boolean = false;
   displayAddPopup: boolean = false;
 
+  selectedProduct: Product = {
+    id:0,
+    name:'',
+    image:'',
+    price:'',
+    rating:0,
+  }
+
   toggleEditPopup(product: Product){
     this.selectedProduct = product;
     this.displayEditPopup = true;
@@ -42,13 +50,7 @@ export class HomeComponent {
     this.deleteProduct(product.id);
   }
 
-  selectedProduct: Product = {
-    id:0,
-    name:'',
-    image:'',
-    price:'',
-    rating:0,
-  }
+  
 
   onConfirmEdit(product: Product){
     if (!this.selectedProduct.id) {
@@ -67,6 +69,7 @@ export class HomeComponent {
 
   resetPaginator(){
     this.paginator?.changePage(0);
+    this.paginator?.updateRowsPerPageOptions();
   }
 
   onPageChange(event: any) {
